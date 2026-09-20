@@ -12,8 +12,8 @@ export default async function DocumentPage(props: PageProps<"/docs/[id]">) {
   }
 
   const { id } = await props.params;
-  const document = await getDocument(id);
-  if (!document) {
+  const doc = await getDocument(id);
+  if (!doc) {
     notFound();
   }
 
@@ -29,10 +29,10 @@ export default async function DocumentPage(props: PageProps<"/docs/[id]">) {
         </Link>
         <div className="mt-4">
           <DocumentEditor
-            document={{
-              ...document,
-              createdAt: document.createdAt.toISOString(),
-              updatedAt: document.updatedAt.toISOString(),
+            doc={{
+              ...doc,
+              createdAt: doc.createdAt.toISOString(),
+              updatedAt: doc.updatedAt.toISOString(),
             }}
           />
         </div>

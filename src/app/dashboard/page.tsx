@@ -1,6 +1,8 @@
 import { redirect } from "next/navigation";
 import { verifySession } from "@/lib/dal";
-import { prisma } from "@/lib/db";
+import { countTeamMembers } from "@/lib/team";
+import { countAnnouncements } from "@/lib/announcements";
+import { countDocuments } from "@/lib/documents";
 import { TopBar } from "@/components/TopBar";
 import { DashboardCard } from "@/components/DashboardCard";
 
@@ -11,9 +13,9 @@ export default async function DashboardPage() {
   }
 
   const [teamCount, announcementCount, documentCount] = await Promise.all([
-    prisma.teamMember.count(),
-    prisma.announcement.count(),
-    prisma.document.count(),
+    countTeamMembers(),
+    countAnnouncements(),
+    countDocuments(),
   ]);
 
   return (

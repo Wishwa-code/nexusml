@@ -1,12 +1,5 @@
 import { StatusDot } from "@/components/StatusDot";
-
-type TeamMember = {
-  id: string;
-  callsign: string;
-  name: string;
-  role: string;
-  status: string;
-};
+import type { TeamMember } from "@/lib/types";
 
 export function TeamTable({ members }: { members: TeamMember[] }) {
   if (members.length === 0) {

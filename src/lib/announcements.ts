@@ -25,6 +25,10 @@ export async function listAnnouncements(): Promise<AnnouncementWithAuthor[]> {
   });
 }
 
+export async function countAnnouncements(): Promise<number> {
+  return prisma.announcement.count();
+}
+
 export async function createAnnouncement(
   authorId: string,
   title: string,

@@ -3,17 +3,17 @@
 import { useState } from "react";
 import type { DocumentFull } from "@/lib/types";
 
-export function DocumentEditor({ document }: { document: DocumentFull }) {
-  const [title, setTitle] = useState(document.title);
-  const [content, setContent] = useState(document.content);
-  const [updatedAt, setUpdatedAt] = useState(document.updatedAt);
+export function DocumentEditor({ doc }: { doc: DocumentFull }) {
+  const [title, setTitle] = useState(doc.title);
+  const [content, setContent] = useState(doc.content);
+  const [updatedAt, setUpdatedAt] = useState(doc.updatedAt);
   const [isSaving, setIsSaving] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
 
   async function handleSave() {
     setIsSaving(true);
     try {
-      const response = await fetch(`/api/documents/${document.id}`, {
+      const response = await fetch(`/api/documents/${doc.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, content }),

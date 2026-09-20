@@ -21,6 +21,10 @@ export async function listDocuments() {
   });
 }
 
+export async function countDocuments(): Promise<number> {
+  return prisma.document.count();
+}
+
 export async function getDocument(id: string) {
   return prisma.document.findUnique({ where: { id }, select: fullSelect });
 }

@@ -18,3 +18,15 @@ export type DocumentSummary = {
 };
 
 export type DocumentFull = DocumentSummary & { content: string };
+
+export type TeamMember = {
+  id: string;
+  callsign: string;
+  name: string;
+  role: string;
+  // Free-form string, not a DB enum (SQLite/Prisma doesn't support enums on
+  // this connector) — "ACTIVE" | "STANDBY" | "OFFLINE" by convention.
+  // StatusDot renders unrecognized values with a neutral fallback rather
+  // than assuming this set is exhaustive.
+  status: string;
+};
